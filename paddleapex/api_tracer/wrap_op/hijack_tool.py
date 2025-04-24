@@ -32,6 +32,7 @@ def hijack_api():
     op = GetTargetOP(cfg.op_target_pth)
     target_op = op.get_target_ops()
     target_class = op.get_target_class()
+    print("hijack api")
     for op_name in target_op:
         parent_package, method_name = op_name.rsplit(".", maxsplit=1)
         try:
@@ -44,6 +45,13 @@ def hijack_api():
         except Exception as err:
             print(op_name, str(err))
     
+    print("hijack api")
+    for attr_name in dir(HookOp):
+        if attr_name.startswith("wrap_"):
+            parent_package, method_name = attr_name[5:].rsplit(".", maxsplit=1)
+            setattr(eval(parent_package), method_name, wrapped_op(attr_name[5:]))
+    
+    print("hijack class")
     for class_in in target_class:
         parent_package, class_n = class_in.rsplit(".", maxsplit=1)
         
@@ -61,7 +69,4 @@ def hijack_api():
         except Exception as err:
             print(class_in, str(err))
 
-    for attr_name in dir(HookOp):
-        if attr_name.startswith("wrap_"):
-            parent_package, method_name = attr_name[5:].rsplit(".", maxsplit=1)
-            setattr(eval(parent_package), method_name, wrapped_op(attr_name[5:]))
+    

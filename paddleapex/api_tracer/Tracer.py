@@ -27,14 +27,12 @@ class Tracer:
 
     def start(self):
         # Evoke stop implicity.
-        if cfg.dump_state:
-            dump_util.dump()
+        # dump_util.dump()
         # global step counting.
         cfg.new_step()
 
     def stop(self):
-        if cfg.dump_state:
-            dump_util.dump()
+        dump_util.dump()
 
     def start_in_training(self, cur_step, acc):
         self.acc = acc

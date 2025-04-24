@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import paddlenlp # if you wanna test nlp fusion operations
+#import paddlenlp # if you wanna test nlp fusion operations
 import argparse
 import os
 from importlib import import_module
@@ -814,8 +814,8 @@ if __name__ == "__main__":
     if os.path.exists(out_path):
         print_warn_log("The output path already exists and the file with the same name will be overwritten.")
     
-    from paddlenlp.trainer import set_seed
-    set_seed(1026)
+    #from paddlenlp.trainer import set_seed
+    #set_seed(1026)
 
     if cfg.distributed_op:
         if cfg.test_class:

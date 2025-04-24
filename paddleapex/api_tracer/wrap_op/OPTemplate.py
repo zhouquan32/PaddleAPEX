@@ -110,6 +110,7 @@ class OPTemplate:
         cfg.prefix_op_name_ = self.op_name_ + "*"
 
     def forward(self, *args, **kwargs):
+        print("OPTemplate", self.op_name_)
         if self.op_name_ not in cfg.Op_count:
             cfg.Op_count[self.op_name_] = 1
             cfg.prefix_op_name_ += "0"
@@ -119,6 +120,7 @@ class OPTemplate:
         if cfg.dump_state:
             api_recorder = API(cfg.dump_mode)
             rank = dist.get_rank()
+            print("rank", rank)
             api_recorder.update_APIInfo(cfg.prefix_op_name_, rank)
             api_recorder.update_real_data(args, kwargs)
             output = getattr(HookOp, "wrap_" + str(self.op_name_))(*args, **kwargs)

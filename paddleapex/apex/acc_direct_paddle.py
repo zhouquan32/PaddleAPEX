@@ -81,10 +81,15 @@ def compare_command(args):
     details_csv_path = os.path.join(out_path, DETAILS_FILE_NAME)
     print_info_log(f"Compare task result will be saved in {result_csv_path}")
     print_info_log(f"Compare task details will be saved in {details_csv_path}")
-    bench_dir = os.path.join(args.bench_dir, "./rank_" + str(rank) + "/output")
-    device_dir = os.path.join(args.device_dir, "./rank_" + str(rank) + "/output")
-    bench_back_dir = os.path.join(args.bench_dir, "./rank_" + str(rank) +  "/output_backward")
-    device_back_dir = os.path.join(args.device_dir, "./rank_" + str(rank) + "/output_backward")
+    #bench_dir = os.path.join(args.bench_dir,        "./rank_" + str(rank) + "/output")
+    #device_dir = os.path.join(args.device_dir,      "./rank_" + str(rank) + "/output")
+    #bench_back_dir = os.path.join(args.bench_dir,   "./rank_" + str(rank) + "/output_backward")
+    #device_back_dir = os.path.join(args.device_dir, "./rank_" + str(rank) + "/output_backward")
+    bench_dir = os.path.join(args.bench_dir,        "./output")
+    device_dir = os.path.join(args.device_dir,      "./output")
+    bench_back_dir = os.path.join(args.bench_dir,   "./output_backward")
+    device_back_dir = os.path.join(args.device_dir, "./output_backward")
+
 
     compare_device_bench(
         result_csv_path,

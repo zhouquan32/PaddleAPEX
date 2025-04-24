@@ -41,7 +41,7 @@ class Config:
         print("*" * 100)
         time.sleep(1)
         self.global_step = 0
-        self.dump_state = False
+        self.dump_state = True
         self.Op_count = {}
         self.prefix_op_name_ = None
 
